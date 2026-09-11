@@ -1,0 +1,12 @@
+# 改行コードはリポジトリ内では LF に統一する。
+# Windows・WSL・Colab（Linux）を行き来する構成なので、これを決めておかないと
+# 中身が同じノートブックが「全行変更」として差分に出る。
+* text=auto eol=lf
+
+# ノートブックは JSON。CRLF が混じると diff と マージが荒れる。
+*.ipynb text eol=lf
+
+# バイナリは変換しない
+*.png binary
+*.jpg binary
+*.pdf binary
