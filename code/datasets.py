@@ -15,7 +15,7 @@ import numpy as np
 
 
 def split_by_patient(patient_ids: Sequence, ratios=(0.7, 0.15, 0.15), seed: int = 0):
-    """**患者単位**で train/val/test の添字を分ける。
+    """**症例単位**で train/val/test の添字を分ける。
 
     画像単位でシャッフルしてはいけない。同一患者の別スライス・別方向が
     学習側と評価側に散ると、モデルは「その患者を覚えている」だけで高得点を出す。

@@ -68,7 +68,7 @@ def test_short_axis_scales_with_spacing():
     assert two == pytest.approx(2 * one, rel=1e-6)
 
 
-# --- 患者単位分割：同じ患者が分割をまたがないこと --------------------------------
+# --- 症例単位分割：同じ患者が分割をまたがないこと --------------------------------
 
 def test_split_is_by_patient_not_by_image():
     patient_ids = np.repeat(np.arange(50), 4)      # 50人 × 4枚ずつ
