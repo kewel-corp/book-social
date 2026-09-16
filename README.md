@@ -20,7 +20,7 @@ book-social/
 │   ├── ch05_evaluation_xai.ipynb
 │   ├── ch06_export_deploy.ipynb
 │   └── ...
-├── code/               ← 章をまたいで使う部品（Dataset、損失関数、評価指標など）
+├── code/               ← 章をまたいで使う共通コード（Dataset、損失関数、評価指標など）
 │   ├── datasets.py
 │   ├── losses.py
 │   └── metrics.py
