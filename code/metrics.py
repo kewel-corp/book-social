@@ -87,7 +87,8 @@ def equiv_ellipse_minor_axis_mm(mask, spacing_mm=(1.0, 1.0)):
     pts *= np.asarray(spacing_mm, dtype=float)   # 画素座標 → mm
     pts -= pts.mean(axis=0)
     s = np.linalg.svd(pts, compute_uv=False)
-    # 楕円の半径は s/sqrt(N)、径はその2倍。短軸は小さいほうの主軸。
+    # s/sqrt(N) は主軸方向の標準偏差。一様に塗られた楕円では半径がその2倍（2*s/sqrt(N)）、
+    # 径は4倍（4*s/sqrt(N)）。短軸は小さいほうの主軸。
     return float(4.0 * s[-1] / np.sqrt(len(pts)))
 
 

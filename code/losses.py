@@ -33,7 +33,8 @@ class TverskyLoss(nn.Module):
     """Diceの一般化。beta を大きくすると偽陰性（見逃し）の罰が重くなる。
 
     alpha + beta = 1 で使うのが通例。alpha=beta=0.5 のとき Dice と一致する。
-    **見逃しを減らしたい課題では beta を上げる** ― ただし偽陽性は必ず増える。
+    **見逃しを減らしたい課題では beta を上げる** ― 偽陰性を相対的に重く扱う。
+    偽陽性とのトレードオフは、検証集合で評価して決める（偽陽性が必ず増えるとは限らない）。
     どこに置くかは臨床側と一緒に決める判断であって、既定値で済ませない。
     """
 
@@ -53,7 +54,8 @@ class TverskyLoss(nn.Module):
 class FocalLoss(nn.Module):
     """易しい例の寄与を下げ、難しい例に学習を集中させる。
 
-    gamma=0 で通常の binary cross entropy に戻る。alpha は陽性クラスの重み。
+    gamma=0 で、alpha によるクラス重み付きの binary cross entropy に戻る（重みのない通常の BCE ではない）。
+    alpha は陽性クラスの重み。
     """
 
     def __init__(self, alpha: float = 0.25, gamma: float = 2.0):
